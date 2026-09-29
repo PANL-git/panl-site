@@ -16,3 +16,28 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# pan-l.fr et pan-l.com (et www.panl.fr, déjà géré par Netlify) renvoient vers l'adresse principale.
+[[redirects]]
+  from = "https://pan-l.fr/*"
+  to = "https://panl.fr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.pan-l.fr/*"
+  to = "https://panl.fr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://pan-l.com/*"
+  to = "https://panl.fr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.pan-l.com/*"
+  to = "https://panl.fr/:splat"
+  status = 301
+  force = true
