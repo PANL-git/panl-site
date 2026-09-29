@@ -1,6 +1,11 @@
 // Génère le site PANL à partir de content/site.json (édité via Pages CMS).
 // Sortie : dist/ (index.html, mentions-legales.html, static/, media/). Aucune dépendance.
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync } from "node:fs";
+import { createHash } from "node:crypto";
+
+// Empreinte du style et du script : chaque changement donne une nouvelle adresse, le navigateur ne garde pas l'ancienne version.
+const empreinte = (f) => createHash("sha1").update(readFileSync(f)).digest("hex").slice(0, 8);
+const vCss = empreinte("static/style.css"), vJs = empreinte("static/site.js"), vFonts = empreinte("static/fonts.css");
 
 const c = JSON.parse(readFileSync("content/site.json", "utf8"));
 const alertes = [];
@@ -34,8 +39,8 @@ const tete = (titrePage, description) => `<!doctype html>
 <meta property="og:type" content="website">
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/static/fonts/Carlito-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/static/fonts.css">
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/fonts.css?v=${vFonts}">
+<link rel="stylesheet" href="/static/style.css?v=${vCss}">
 <script>document.documentElement.classList.add("js")</script>
 </head>`;
 
@@ -168,7 +173,7 @@ ${volets}
 
 ${pied()}
 
-<script src="/static/site.js"></script>
+<script src="/static/site.js?v=${vJs}"></script>
 </body>
 </html>
 `;
@@ -205,7 +210,7 @@ ${entete(false)}
   </div>
 </main>
 ${pied()}
-<script src="/static/site.js"></script>
+<script src="/static/site.js?v=${vJs}"></script>
 </body>
 </html>
 `;
