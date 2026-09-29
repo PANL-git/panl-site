@@ -1,0 +1,122 @@
+# Configuration Pages CMS (https://pagescms.org) : formulaire d'édition du site panl.fr.
+# Chaque enregistrement crée un commit sur le dépôt, puis le site se republie en une à deux minutes.
+media:
+  input: media
+  output: /media
+  extensions: [jpg, jpeg, png, webp]
+  rename: safe
+
+content:
+  - name: site
+    label: Contenu du site
+    description: "Tous les textes et images de la page d'accueil. Un titre qui se termine par un point affiche ce point en orange."
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: hero
+        label: "1. Haut de page"
+        type: object
+        fields:
+          - { name: titre, label: Titre principal, type: string, required: true, description: "Deux lignes maximum sur ordinateur." }
+          - { name: texte, label: Phrase d'accroche, type: text, required: true, description: "Vingt mots maximum." }
+          - { name: bouton_principal, label: Bouton orange, type: string, required: true }
+          - { name: bouton_secondaire, label: Bouton blanc, type: string, required: true }
+          - { name: image, label: Photo de fond, type: image, required: true, description: "Paysage, 1600 px de large au minimum. Elle est teintée en bleu nuit automatiquement." }
+
+      - name: chiffres
+        label: "2. Chiffres clés"
+        description: "De 3 à 5 chiffres. Les nombres entiers s'animent à l'affichage."
+        type: object
+        list:
+          min: 3
+          max: 5
+          collapsible:
+            collapsed: true
+            summary: "{avant}{valeur}{apres} {libelle}"
+        fields:
+          - { name: avant, label: "Avant le chiffre (ex. +)", type: string }
+          - { name: valeur, label: Chiffre, type: string, required: true }
+          - { name: apres, label: "Après le chiffre (ex. %)", type: string }
+          - { name: libelle, label: Libellé, type: string, required: true }
+
+      - name: secteurs
+        label: "3. Secteurs"
+        type: object
+        fields:
+          - { name: titre, label: Titre de la section, type: string, required: true }
+          - name: liste
+            label: Secteurs
+            type: object
+            list:
+              min: 2
+              max: 4
+              collapsible:
+                collapsed: true
+                summary: "{titre}"
+            fields:
+              - { name: titre, label: Nom du secteur, type: string, required: true }
+              - { name: texte, label: Description, type: text, required: true, description: "Une à deux phrases." }
+              - { name: image, label: Photo, type: image, required: true }
+              - { name: description_image, label: Description de la photo, type: string, description: "Lue par les lecteurs d'écran, non affichée." }
+              - { name: lien, label: "Lien « En savoir plus »", type: string, description: "Optionnel. Laisser vide pour ne pas afficher de lien." }
+
+      - name: manifeste
+        label: "4. Le sens du logo"
+        type: object
+        fields:
+          - { name: titre, label: Titre, type: text, required: true }
+          - { name: texte, label: Texte, type: text, required: true }
+
+      - name: engagements
+        label: "5. Bandeau des engagements"
+        description: "Les mots qui défilent entre deux points orange."
+        type: string
+        list:
+          min: 3
+          max: 8
+          collapsible: false
+
+      - name: carrieres
+        label: "6. Carrières"
+        type: object
+        fields:
+          - { name: titre, label: Titre, type: string, required: true }
+          - { name: texte, label: Texte, type: text, required: true }
+          - { name: bouton, label: Texte du bouton, type: string, required: true }
+          - { name: lien, label: Lien du bouton, type: string, description: "Page d'offres ou LinkedIn. Vide : le bouton ouvre un e-mail de candidature vers l'adresse de contact." }
+          - { name: image, label: Photo, type: image, required: true }
+
+      - name: contact
+        label: "7. Contact"
+        type: object
+        fields:
+          - { name: accroche, label: Phrase d'accroche, type: string, required: true }
+          - { name: email, label: Adresse e-mail, type: string, required: true }
+          - { name: linkedin, label: Page LinkedIn, type: string, description: "Adresse complète (https://...). Vide : le lien n'apparaît pas." }
+
+      - name: signature
+        label: Signature sous le logo (animation d'ouverture)
+        type: string
+
+      - name: referencement
+        label: Référencement Google
+        type: object
+        fields:
+          - { name: titre, label: Titre de l'onglet et de Google, type: string, required: true }
+          - { name: description, label: Description dans Google, type: text, required: true, description: "150 caractères environ." }
+
+      - name: mentions_legales
+        label: Mentions légales
+        description: "Obligatoires pour un site d'entreprise (loi LCEN) : raison sociale, siège, RCS ou SIREN, directeur de la publication."
+        type: object
+        fields:
+          - { name: editeur, label: Raison sociale, type: string }
+          - { name: forme_et_capital, label: "Forme juridique et capital (ex. SAS au capital de 10 000 €)", type: string }
+          - { name: siege, label: Adresse du siège, type: string }
+          - { name: rcs_siren, label: "RCS ou SIREN", type: string }
+          - { name: tva, label: TVA intracommunautaire, type: string }
+          - { name: directeur_publication, label: Directeur de la publication, type: string }
+          - { name: telephone, label: Téléphone, type: string }
+          - { name: hebergeur, label: Hébergeur, type: string }
+          - { name: credits_photos, label: Crédits photographiques, type: text }

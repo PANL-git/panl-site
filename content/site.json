@@ -1,0 +1,62 @@
+{
+  "referencement": {
+    "titre": "PANL | Ingénierie, industrie, conseil technique",
+    "description": "Ingénierie, industrie et conseil technique : des experts engagés au plus près de vos projets."
+  },
+  "signature": "Ingénierie · Industrie · Conseil technique",
+  "hero": {
+    "titre": "Quand l’expertise rencontre l’ambition.",
+    "texte": "Ingénierie, industrie et conseil technique : des experts engagés au plus près de vos projets.",
+    "bouton_principal": "Nos expertises",
+    "bouton_secondaire": "Nous rejoindre",
+    "image": "/media/tuyauterie.jpg"
+  },
+  "chiffres": [
+    { "avant": "+", "valeur": "450", "apres": "", "libelle": "experts mobilisables" },
+    { "avant": "", "valeur": "5", "apres": "", "libelle": "pays d'implantation" },
+    { "avant": "+", "valeur": "10", "apres": "", "libelle": "ans d'expérience" },
+    { "avant": "", "valeur": "97", "apres": " %", "libelle": "de clients fidèles" }
+  ],
+  "secteurs": {
+    "titre": "Trois terrains, une même exigence technique.",
+    "liste": [
+      { "titre": "Industrie & process", "texte": "Conception, amélioration et fiabilisation des procédés, de l'étude à la mise en service.", "image": "/media/industrie.jpg", "description_image": "Technicien intervenant sur des réseaux de tuyauterie", "lien": "" },
+      { "titre": "Énergie & nucléaire", "texte": "Ingénierie et accompagnement technique sur des installations aux exigences de sûreté élevées.", "image": "/media/energie.jpg", "description_image": "Tour de refroidissement d'une centrale", "lien": "" },
+      { "titre": "Digital & transformation", "texte": "Données, outils et automatisation au service de la performance industrielle.", "image": "/media/digital.jpg", "description_image": "Opérateur en salle de contrôle", "lien": "" }
+    ]
+  },
+  "manifeste": {
+    "titre": "Deux barres et un point. L'outil, l'accompagnement, et au centre, le collaborateur.",
+    "texte": "Chaque mission part d'une personne : l'expert qui connaît le terrain, entouré des méthodes et du suivi qui lui permettent de livrer."
+  },
+  "engagements": [
+    "Expertise industrielle",
+    "Innovation",
+    "Proximité client",
+    "Recrutement de talents",
+    "Présence internationale"
+  ],
+  "carrieres": {
+    "titre": "Votre expertise, au centre du projet.",
+    "texte": "Ingénieurs, techniciens, chefs de projet : des missions à la hauteur de vos compétences, en France et à l'international.",
+    "bouton": "Nous rejoindre",
+    "lien": "",
+    "image": "/media/carrieres.jpg"
+  },
+  "contact": {
+    "accroche": "Un projet, un besoin d'expertise ?",
+    "email": "contact@panl.fr",
+    "linkedin": ""
+  },
+  "mentions_legales": {
+    "editeur": "",
+    "forme_et_capital": "",
+    "siege": "",
+    "rcs_siren": "",
+    "tva": "",
+    "directeur_publication": "",
+    "telephone": "",
+    "hebergeur": "Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis",
+    "credits_photos": "Wikimedia Commons : Blue Grass Chemical Agent-Destruction Pilot Plant (CC BY 2.0) ; Cooling tower of the Gösgen Nuclear Power Plant (CC BY-SA 4.0) ; Control Room DSC0038 (CC BY-SA 4.0) ; Welder At Work (CC BY-SA 3.0) ; Flooded room with pipes, Oupeye (CC BY 4.0)."
+  }
+}
