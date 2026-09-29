@@ -5,8 +5,24 @@
   var intro = document.querySelector('.intro'), dejaVu = false;
   try { dejaVu = sessionStorage.getItem('panl-intro') === '1'; sessionStorage.setItem('panl-intro','1'); } catch(e){}
   if (intro && !reduit && !dejaVu) {
-    intro.classList.add('joue');
+    intro.classList.add('mesure');
+    var lance = false;
+    var demarre = function(){
+      if (lance) return; lance = true;
+      // Position de départ (slide 9, T0) : le point au centre, les deux barres serrées contre lui.
+      var logo = intro.querySelector('.logo'), b1 = intro.querySelector('.b1'), b2 = intro.querySelector('.b2'), dot = intro.querySelector('.dot');
+      var centre = function(el){ var r = el.getBoundingClientRect(); return r.left + r.width / 2; };
+      var c = centre(logo), ecart = b1.offsetHeight * 0.30;
+      b1.style.setProperty('--dx', (c - ecart - centre(b1)) + 'px');
+      dot.style.setProperty('--dx', (c - centre(dot)) + 'px');
+      b2.style.setProperty('--dx', (c + ecart - centre(b2)) + 'px');
+      intro.classList.remove('mesure');
+      intro.classList.add('joue');
+    };
     intro.addEventListener('animationend', function(ev){ if (ev.animationName === 'sortie') intro.classList.add('fini'); });
+    // Les positions dépendent de la police : on attend qu'elle soit chargée, sans dépasser 800 ms.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(demarre);
+    setTimeout(demarre, 800);
   }
 
   // Header : aplat nuit une fois le hero dépassé

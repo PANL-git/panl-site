@@ -24,6 +24,9 @@
   /* Ouverture : révélation du logo, 1,9 s, une fois par session (slide 11) */
   .intro{position:fixed;inset:0;z-index:50;background:var(--nuit);display:none;place-items:center;pointer-events:none}
   .js .intro.joue{display:grid;animation:sortie .9s var(--ease) 2.1s forwards}
+  /* Mesure des positions avant l'animation : fond bleu nuit affiché, logo encore caché */
+  .js .intro.mesure{display:grid}
+  .intro.mesure .logo,.intro.mesure .base{visibility:hidden}
   @keyframes sortie{to{transform:translateY(-100%);visibility:hidden}}
   .intro .logo{font-size:clamp(44px,8vw,96px)}
   .intro .logo .bar{width:.075em}
@@ -33,12 +36,14 @@
   .intro.joue .b2{animation:barD .8s var(--ease) .35s both}
   .intro.joue .pa{animation:txtG .55s ease-out .6s both}
   .intro.joue .L{animation:txtD .55s ease-out .72s both}
-  .intro.joue .dot{animation:pulse .45s ease-in-out 1.1s}
+  .intro.joue .dot{animation:pointCentre .8s var(--ease) .35s both, pulse .45s ease-in-out 1.2s}
   .intro.joue .base{animation:fondu .5s ease-out 1.35s both}
   .js .intro.fini{display:none}
   @keyframes apparait{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-  @keyframes barG{from{transform:translateX(1.6em) rotate(12deg)}to{transform:rotate(12deg)}}
-  @keyframes barD{from{transform:translateX(-1.6em) rotate(12deg)}to{transform:rotate(12deg)}}
+  /* T0 : pictogramme compact et centré (décalages --dx calculés par site.js), puis les barres s'écartent */
+  @keyframes barG{from{transform:translateX(var(--dx,0px)) rotate(12deg)}to{transform:rotate(12deg)}}
+  @keyframes barD{from{transform:translateX(var(--dx,0px)) rotate(12deg)}to{transform:rotate(12deg)}}
+  @keyframes pointCentre{from{transform:translateX(var(--dx,0px))}to{transform:none}}
   @keyframes txtG{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
   @keyframes txtD{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
   @keyframes pulse{50%{transform:scale(1.06)}}
